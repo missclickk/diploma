@@ -1,0 +1,8 @@
+.header{
+    background-color:  cornflowerblue;
+    margin-bottom: 10px;
+    grid-area: header;
+    text-align: center;
+    font-size: larger;
+    font-weight: 500;
+}

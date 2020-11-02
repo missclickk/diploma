@@ -1,0 +1,51 @@
+.workSpace{
+    margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr ;
+}
+
+
+.whiteSpace{
+  position:absolute;
+  cursor: pointer;
+width: 500px;
+height: 500px;
+left: 500px;
+background-color: red;
+top:200px;
+}
+
+.leftButton{
+    cursor: pointer;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+}
+.rightButton{
+    cursor: pointer;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+}
+
+.opacity0{
+  opacity: 1;
+}
+.opacity1{
+  opacity: 0.8;
+}
+
+.opacity2{
+  opacity: 0.6;
+}
+.opacity3{
+  opacity: 0.4;
+}
+.opacity4{
+  opacity: 0.2;
+}
+.opacity5{
+ background-color: red;
+}
