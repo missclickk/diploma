@@ -1,14 +1,15 @@
 import React from 'react';
-import styles from './App.module.css';
+import './App.css';
+import "materialize-css"
 import Content from "./components/content/content"
 import Header from './components/header/header';
 import Nav from "./components/nav/nav"
 function App() {
   return (
-    <div className={styles.grid}>
-      <Header/>
-      <Nav/>
-      <Content/>
+    <div className="row">
+    <div className="col s12"><Header/></div>
+    <div className="col s2"><Nav/></div>
+    <div className="col s10"><Content/></div>
          </div>
   );
 }
