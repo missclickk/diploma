@@ -4,6 +4,7 @@ import Content from "./components/content/content"
 import Header from './components/header/header';
 import Nav from "./components/nav/nav"
 function App() {
+  console.log("hi");
   return (
     <div className={styles.grid}>
       <Header/>
