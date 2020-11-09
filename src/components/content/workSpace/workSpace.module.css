@@ -6,13 +6,13 @@
 
 
 .whiteSpace{
-  position:absolute;
-  cursor: pointer;
-width: 500px;
-height: 500px;
+position:relative;
+cursor: pointer;
+width: 300px;
+height: 300px;
 left: 500px;
-background-color: red;
-top:200px;
+background-color: white;
+top:100px;
 }
 
 .leftButton{
