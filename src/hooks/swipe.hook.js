@@ -1,20 +1,24 @@
 import styles from "./../components/content/workSpace/workSpace.module.css"
 import "./../components/content/workSpace/opacity.css"
 export const  useSwipe=()=>{
-let pointerCor = null;
-let flag = true;
-let firstObjCor = null;
-let opacityClassNumber=0;
-let range=60;
-let leftRight="left";
+    let pointerCor = null;
+    let flag = true;
+    let opacityClassNumber = 0;
+    let firstObjCor = null;
+    let range = 60;
+    let leftRight = "left";
 
-const stopChangingCoordinate = () => {
+const setDefaultParameters = () => {
     const target = document.getElementsByClassName(styles.whiteSpace)[0];
-    if(target.classList[1]==="opacity7")
     target.classList.remove(`${ target.classList[1]}`);
-    target.style.left=`${firstObjCor}px`;  
-    document.removeEventListener("mousemove", changeCoordinate);
-    document.removeEventListener("mouseup", stopChangingCoordinate);
+    target.style.left=`${500}px`;
+    pointerCor = null;
+     flag = true;
+     opacityClassNumber = 0;
+     firstObjCor = null;
+     range = 60;
+     leftRight = "left"; 
+   
 }
 
 const changeCoordinate = (cor,firstPointerCor,mouseDownOnSpace) => {
@@ -27,28 +31,31 @@ const changeCoordinate = (cor,firstPointerCor,mouseDownOnSpace) => {
     if (mouseDownOnSpace) {
         let objCoordinate = Math.floor(target.getBoundingClientRect().left + cor - pointerCor);
         target.style.left = `${objCoordinate}px`;
-        if(cor<pointerCor)
-        leftRight="left";
-       if(cor>pointerCor)
-        leftRight="right";
+        if (cor < pointerCor)
+            leftRight = "left";
+        if (cor > pointerCor)
+            leftRight = "right";
         pointerCor = cor;
     }
 
-    if ((target.getBoundingClientRect().left>firstObjCor + range &&   leftRight==="right" &&  firstObjCor<target.getBoundingClientRect().left )||(target.getBoundingClientRect().left<firstObjCor - range &&   leftRight==="left"  &&  firstObjCor>target.getBoundingClientRect().left)) {
-        target.classList.remove(`opacity${opacityClassNumber-1}`);
+    if ((target.getBoundingClientRect().left > firstObjCor + range && leftRight === "right" && firstObjCor < target.getBoundingClientRect().left) || (target.getBoundingClientRect().left < firstObjCor - range && leftRight === "left" && firstObjCor > target.getBoundingClientRect().left)) {
+        target.classList.remove(`opacity${opacityClassNumber - 1}`);
         target.classList.add(`opacity${opacityClassNumber}`);
         opacityClassNumber++;
-        range+=60;
-        if(target.classList[1]===`opacity7`)
-        stopChangingCoordinate();
+        range += 60;
+        if (target.classList[1] === `opacity7`)
+            return true;
     }
-    if ((target.getBoundingClientRect().left<firstObjCor + range && leftRight==="left"  &&  firstObjCor<target.getBoundingClientRect().left)||(target.getBoundingClientRect().left>firstObjCor - range && leftRight==="right"  &&  firstObjCor>target.getBoundingClientRect().left)) {
-        target.classList.remove(`opacity${opacityClassNumber+1}`);
+    if ((target.getBoundingClientRect().left < firstObjCor + range && leftRight === "left" && firstObjCor < target.getBoundingClientRect().left) || (target.getBoundingClientRect().left > firstObjCor - range && leftRight === "right" && firstObjCor > target.getBoundingClientRect().left)) {
+        target.classList.remove(`opacity${opacityClassNumber + 1}`);
         target.classList.add(`opacity${opacityClassNumber}`);
         opacityClassNumber--;
-        range-=60;
+        range -= 60;
+        if (target.classList[1] === `opacity7`)
+        return true;
     }
+    return false;
 }
 
-return {stopChangingCoordinate,changeCoordinate};
+return {setDefaultParameters,changeCoordinate};
 }

@@ -8,10 +8,10 @@ import "materialize-css";
 import "./mater.css"
 
 function App() {
-  const {changeCoordinate,stopChangingCoordinate}=useSwipe();
+  const {changeCoordinate,setDefaultParameters}=useSwipe();
 
   return (
-    <Swipe.Provider value={{stopChangingCoordinate,changeCoordinate}}>
+    <Swipe.Provider value={{setDefaultParameters,changeCoordinate}}>
     <div className={styles.grid}>
       <Header/>
       <Content/>
