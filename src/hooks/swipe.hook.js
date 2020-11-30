@@ -44,7 +44,7 @@ const changeCoordinate = (cor,firstPointerCor,mouseDownOnSpace) => {
         opacityClassNumber++;
         range += 60;
         if (target.classList[1] === `opacity7`)
-            return true;
+            return leftRight;
     }
     if ((target.getBoundingClientRect().left < firstObjCor + range && leftRight === "left" && firstObjCor < target.getBoundingClientRect().left) || (target.getBoundingClientRect().left > firstObjCor - range && leftRight === "right" && firstObjCor > target.getBoundingClientRect().left)) {
         target.classList.remove(`opacity${opacityClassNumber + 1}`);
@@ -52,9 +52,9 @@ const changeCoordinate = (cor,firstPointerCor,mouseDownOnSpace) => {
         opacityClassNumber--;
         range -= 60;
         if (target.classList[1] === `opacity7`)
-        return true;
+        return leftRight;
     }
-    return false;
+    return null;
 }
 
 return {setDefaultParameters,changeCoordinate};
