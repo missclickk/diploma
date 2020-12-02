@@ -29,10 +29,11 @@ const WorkSpace = () => {
     
     const changeCoordinate = (event) => {
         const cor = event.pageX;
-        const result=swipe.changeCoordinate(cor,firstPointerCor,mouseDownOnSpace)
-      request.createRequest(result);  
-      stopChangingCoordinate();
-      }
+        const result=swipe.changeCoordinate(cor,firstPointerCor,mouseDownOnSpace); 
+        if(result!==null)
+        {request.createRequest(result);  
+      stopChangingCoordinate();}
+    }
     
 
     const mouseDown = (event) => {
@@ -43,7 +44,7 @@ const WorkSpace = () => {
     return (
         <div className={styles.workSpace}>
             <div className={styles.area}>
-                <div className={styles.whiteSpace} onMouseDown={mouseDown} onMouseUp={ stopChangingCoordinate } />
+                <div className={styles.whiteSpace} onMouseDown={mouseDown}  onMouseUp={ stopChangingCoordinate } />
             </div>
         </div>
     )
